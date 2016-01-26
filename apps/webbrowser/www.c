@@ -193,7 +193,7 @@ PROCESS(www_process, "Web browser");
 
 AUTOSTART_PROCESSES(&www_process);
 
-static void formsubmit(struct inputattrib *trigger);
+static void CC_FASTCALL formsubmit(struct inputattrib *trigger);
 
 /*-----------------------------------------------------------------------------------*/
 /* make_window()
@@ -229,7 +229,7 @@ redraw_window(void)
   ctk_window_redraw(&mainwindow);
 }
 /*-----------------------------------------------------------------------------------*/
-static char *
+static char * CC_FASTCALL
 add_pageattrib(unsigned size)
 {
   char *ptr;
@@ -243,7 +243,7 @@ add_pageattrib(unsigned size)
 }
 /*-----------------------------------------------------------------------------------*/
 #if WWW_CONF_FORMS
-static void
+static void CC_FASTCALL
 add_forminput(struct inputattrib *inputptr)
 {
   inputptr->nextptr = NULL;
@@ -282,7 +282,7 @@ start_loading(void)
   clear_page();
 }
 /*-----------------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 show_statustext(char *text)
 {
   ctk_label_set_text(&statustext, text);
@@ -397,7 +397,7 @@ open_url(void)
  * Will format a link from the current web pages so that it suits the
  * open_url() function.
  */
-static void
+static void CC_FASTCALL
 set_link(char *link)
 {
   register char *urlptr;
@@ -617,7 +617,7 @@ PROCESS_THREAD(www_process, ev, data)
  * "url" variable and the visible "editurl" (which is shown in the URL
  * text entry widget in the browser window).
  */
-static void
+static void CC_FASTCALL
 set_url(char *host, uint16_t port, char *file)
 {
   char *urlptr;
@@ -731,7 +731,7 @@ webclient_datahandler(char *data, uint16_t len)
   }
 }
 /*-----------------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 add_pagewidget(char *text, unsigned char size, char *attrib, unsigned char type,
 	       unsigned char border)
 {
@@ -942,7 +942,7 @@ htmlparser_inputfield(unsigned char type, unsigned char size, char *text, char *
   }
 }
 /*-----------------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 add_query(char delimiter, char *string)
 {
   static char *query;
@@ -970,7 +970,7 @@ add_query(char delimiter, char *string)
   query += length;
 }
 /*-----------------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 formsubmit(struct inputattrib *trigger)
 {
   struct inputattrib *input;

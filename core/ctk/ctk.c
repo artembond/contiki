@@ -185,7 +185,7 @@ unsigned short ctk_screensaver_timeout = (5*60);
 static struct timer timer;
 #endif /* CTK_CONF_SCREENSAVER */
 
-static void
+static void CC_FASTCALL
 textentry_input(ctk_arch_key_t c,
 		CC_REGISTER_ARG struct ctk_textentry *t);
 
@@ -555,7 +555,7 @@ ctk_menu_remove(struct ctk_menu *menu)
  * \param clipy2 The lower bound of the clip interval
  */
 /*---------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 do_redraw_all(unsigned char clipy1, unsigned char clipy2)
 {
 #if CTK_CONF_WINDOWS
@@ -923,7 +923,7 @@ ctk_widget_redraw(struct ctk_widget *widget)
  * \param widget The widget to be added.
  */
 /*---------------------------------------------------------------------------*/
-void
+void CC_FASTCALL
 ctk_widget_add(CC_REGISTER_ARG struct ctk_window *window,
 	       CC_REGISTER_ARG struct ctk_widget *widget)
 {
@@ -975,7 +975,7 @@ ctk_desktop_height(struct ctk_desktop *d)
  * \param focus The widget to be focused.
  */
 /*---------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 select_widget(struct ctk_widget *focus)
 {
   struct ctk_window *window;
@@ -1003,7 +1003,7 @@ select_widget(struct ctk_widget *focus)
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
-static void
+static void CC_FASTCALL
 switch_focus_widget(unsigned char direction)
 {
 #if CTK_CONF_WINDOWS
@@ -1128,7 +1128,7 @@ switch_menu_item(unsigned char updown)
 }
 #endif /* CTK_CONF_MENUS */
 /*---------------------------------------------------------------------------*/
-static unsigned char
+static unsigned char CC_FASTCALL
 activate(CC_REGISTER_ARG struct ctk_widget *w)
 {
   if(w->type == CTK_WIDGET_BUTTON) {
@@ -1185,7 +1185,7 @@ ctk_textentry_input_null(ctk_arch_key_t c, struct ctk_textentry *t)
 }
 #endif /* SDCC */
 /*---------------------------------------------------------------------------*/
-static void
+static void CC_FASTCALL
 textentry_input(ctk_arch_key_t c, CC_REGISTER_ARG struct ctk_textentry *t)
 {
   register char *cptr, *cptr2;

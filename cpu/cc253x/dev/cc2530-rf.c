@@ -65,11 +65,15 @@
 #define RF_RX_LED_OFF()		leds_off(LEDS_RED);
 #define RF_TX_LED_ON()		leds_on(LEDS_GREEN);
 #define RF_TX_LED_OFF()		leds_off(LEDS_GREEN);
+#define RF_RX_ACTIVE_ON()	leds_on(LEDS_YELLOW);
+#define RF_RX_ACTIVE_OFF()	leds_off(LEDS_YELLOW);
 #else
 #define RF_RX_LED_ON()
 #define RF_RX_LED_OFF()
 #define RF_TX_LED_ON()
 #define RF_TX_LED_OFF()
+#define RF_RX_ACTIVE_ON()
+#define RF_RX_ACTIVE_OFF()
 #endif
 /*---------------------------------------------------------------------------*/
 #define DEBUG 0

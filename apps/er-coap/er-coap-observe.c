@@ -58,9 +58,9 @@ LIST(observers_list);
 /*---------------------------------------------------------------------------*/
 /*- Internal API ------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*/
-static coap_observer_t *
-add_observer(uip_ipaddr_t *addr, uint16_t port, const uint8_t *token,
-             size_t token_len, const char *uri, int uri_len)
+coap_observer_t *
+coap_add_observer(uip_ipaddr_t *addr, uint16_t port, const uint8_t *token,
+                  size_t token_len, const char *uri)
 {
   /* Remove existing observe relationship, if any. */
   coap_remove_observer_by_uri(addr, port, uri);
